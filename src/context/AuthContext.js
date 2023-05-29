@@ -31,7 +31,7 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (event) => {
         event.preventDefault()
-        let response = await fetch("http://127.0.0.1:8000/token/",{
+        let response = await fetch(`${process.env.REACT_CHATAPP_API}/token/`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
@@ -54,7 +54,7 @@ export const AuthProvider = ({children}) => {
 
     const signupUser = async (event) => {
         event.preventDefault()
-        await fetch('http://127.0.0.1:8000/register/', {
+        await fetch(`${process.env.REACT_CHATAPP_API}/register/`, {
             method:"POST",
             headers: {
                 'X-CSRFToken':csrftoken,
@@ -63,7 +63,7 @@ export const AuthProvider = ({children}) => {
             body: JSON.stringify({email:event.target.email.value,username:event.target.username.value, password:event.target.password.value})
         })
         console.log("user signuped");
-        let response = await fetch("http://127.0.0.1:8000/token/",{
+        let response = await fetch(`${process.env.REACT_CHATAPP_API}/token/`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
@@ -93,7 +93,7 @@ export const AuthProvider = ({children}) => {
 
     let updateToken = async () => {
 
-        let response = await fetch('http://127.0.0.1:8000/token/refresh/', {
+        let response = await fetch(`${process.env.REACT_CHATAPP_API}/token/refresh/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

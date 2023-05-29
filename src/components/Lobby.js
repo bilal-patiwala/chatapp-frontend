@@ -20,7 +20,7 @@ const Lobby = () => {
     },[search])
 
     const searching = async () => {
-        let response = await fetch(`http://127.0.0.1:8000/searchUser/${search}`,{
+        let response = await fetch(`${process.env.REACT_CHATAPP_API}/searchUser/${search}`,{
             method:'GET',
             headers:{
               'Authorization':`Bearer ${localStorage.getItem('authToken')}`,

@@ -28,7 +28,7 @@ const Room = () => {
   let ws = null
   let chatSocket = null
   if(receiver){
-    ws = `ws://127.0.0.1:8000/ws/chat/${receiver}/?token=${authToken.refresh}`
+    ws = `ws://${process.env.REACT_CHATAPP_API}ws/chat/${receiver}/?token=${authToken.refresh}`
     chatSocket = new WebSocket(ws);
     chatSocket.onopen = async (event) => {
       console.log("Connection open", event);
@@ -54,7 +54,7 @@ const Room = () => {
   },[receiver,currentMessage])
   
   const getMessage = async () => {
-    let response = await fetch("http://127.0.0.1:8000/getMessages/", {
+    let response = await fetch(`${REACT_CHATAPP_API}getMessages/`, {
       method:"GET",
       headers:{
         'Authorization':`Bearer ${authToken.refresh}`,
