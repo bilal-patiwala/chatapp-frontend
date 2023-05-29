@@ -54,7 +54,7 @@ const Room = () => {
   },[receiver,currentMessage])
   
   const getMessage = async () => {
-    let response = await fetch(`${REACT_CHATAPP_API}getMessages/`, {
+    let response = await fetch(`${process.env.REACT_CHATAPP_API}getMessages/`, {
       method:"GET",
       headers:{
         'Authorization':`Bearer ${authToken.refresh}`,

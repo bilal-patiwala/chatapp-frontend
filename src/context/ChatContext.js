@@ -12,7 +12,7 @@ export const ChatProvider = ({children}) => {
         event.preventDefault()
         setReceiver(event.target.value)
         console.log(authToken.access);
-        let response = await fetch(`http://127.0.0.1:8000/getThread/${event.target.value}/`, {
+        let response = await fetch(`${process.env.REACT_CHATAPP_API}getThread/${event.target.value}/`, {
             method:"GET",
             headers:{
                 'Authorization':`Bearer ${authToken.refresh}`,
